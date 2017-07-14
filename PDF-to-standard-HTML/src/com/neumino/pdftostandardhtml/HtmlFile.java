@@ -41,7 +41,7 @@ public class HtmlFile extends PDFTextStripper{
     private int resolution = 72; //default resolution
 
     private boolean needToStartNewSpan = false;
-    
+    private int count=0;
     private int lastMarginLeft = 0;
     private int lastMarginRight = 0;
     private int numberSpace = 0;
@@ -436,7 +436,7 @@ public class HtmlFile extends PDFTextStripper{
 
 		}
 		else {
-			if (lastMarginTop != 0) {
+			if (count!= 0) {
 				htmlFile.write("</span>");
 			}
 			
@@ -450,6 +450,7 @@ public class HtmlFile extends PDFTextStripper{
 			htmlFile.write("\">");
 
 			lastMarginTop = marginTop;
+			count++;
 		}
 		
 		htmlFile.write(text.getCharacter().replace("<", "&lt;").replace(">", "&gt;"));
